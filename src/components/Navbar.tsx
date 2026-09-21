@@ -11,10 +11,10 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/destinations" className="text-white hover:text-blue-300 transition-colors font-medium">
+            <Link href="/#packages" className="text-white hover:text-blue-300 transition-colors font-medium">
               Destinations
             </Link>
-            <Link href="/about" className="text-white hover:text-blue-300 transition-colors font-medium">
+            <Link href="/#about" className="text-white hover:text-blue-300 transition-colors font-medium">
               About
             </Link>
             <Link href="/contact" className="text-white hover:text-blue-300 transition-colors font-medium">

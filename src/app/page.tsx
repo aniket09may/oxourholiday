@@ -75,7 +75,7 @@ export default async function Home() {
       </section>
 
       {/* 2. FEATURED DESTINATIONS */}
-      <section id="destinations" className="py-24 px-6 max-w-7xl mx-auto w-full">
+      <section id="packages" className="py-24 px-6 max-w-7xl mx-auto w-full">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
             Featured Tour Packages
@@ -169,7 +169,7 @@ export default async function Home() {
       </section>
 
       {/* 3. DIGITAL LEAD GENERATION */}
-      <section id="contact" className="bg-slate-50 py-20 px-6 border-t border-slate-200">
+      <section id="about" className="bg-slate-50 py-20 px-6 border-t border-slate-200">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-blue-600 text-sm font-bold tracking-wider uppercase mb-2 block">
             Direct WhatsApp Consultation
@@ -195,7 +195,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div>
             <span className="text-xl font-extrabold text-white tracking-tight">
-              GLOBAL<span className="text-blue-500">GATEWAY</span>
+              OXOUR<span className="text-blue-500">HOLIDAY</span>
             </span>
             <p className="text-xs text-slate-400 mt-1">
               Registered Tour Operator • Servicing Pan-India
