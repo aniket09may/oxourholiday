@@ -100,10 +100,10 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
         <div className="flex gap-2">
                                         <select
                       value={countryCode}
-                      onChange={(e) => {
+                                            onChange={(e) => {
                         const selected = COUNTRY_CODES.find(c => c.code === e.target.value);
                         setCountryCode(e.target.value);
-                        setSelectedCountry(selected?.country || "IN");
+                        setSelectedCountry((selected?.country || "IN") as CountryCode);
                       }}
                       className="w-[140px] shrink-0 px-3 py-3 rounded-lg border border-white/30 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
                     >
