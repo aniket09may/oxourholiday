@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { submitLead } from "@/actions/submitLead";
+import { isValidPhoneNumber } from "libphonenumber-js";
 
 interface LeadFormProps {
   destinations?: string[];
@@ -29,6 +30,7 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
       destination: destinations.length > 0 ? destinations[0] : "custom",
     });
     const [countryCode, setCountryCode] = useState("+91");
+    const [selectedCountry, setSelectedCountry] = useState("IN");
     const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -39,18 +41,18 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
     setError(null);
     setSuccess(false);
 
-    try {
-      // Strip non-numeric characters
-      const cleanPhone = formData.phone.replace(/[^0-9]/g, "");
+        try {
+      // Validate phone number using libphonenumber-js
+      const phoneValue = formData.phone;
       
-      // Validate phone length
-      if (cleanPhone.length < 7) {
-        setError("Please enter a valid mobile number.");
+      if (!isValidPhoneNumber(phoneValue, selectedCountry)) {
+        setError("Please enter a valid mobile number for the selected country.");
         setIsSubmitting(false);
         return;
       }
       
-      // Format for DB and WhatsApp API
+      // Strip non-numeric characters for DB and WhatsApp API
+      const cleanPhone = phoneValue.replace(/[^0-9]/g, "");
       const fullWhatsApp = countryCode.replace('+', '') + cleanPhone;
 
       // Submit lead (Supabase insert + Resend email notification)
@@ -96,9 +98,13 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
           WhatsApp Mobile Number
         </label>
         <div className="flex gap-2">
-                    <select
+                                        <select
                       value={countryCode}
-                      onChange={(e) => setCountryCode(e.target.value)}
+                      onChange={(e) => {
+                        const selected = COUNTRY_CODES.find(c => c.code === e.target.value);
+                        setCountryCode(e.target.value);
+                        setSelectedCountry(selected?.country || "IN");
+                      }}
                       className="w-[140px] shrink-0 px-3 py-3 rounded-lg border border-white/30 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
                     >
             {COUNTRY_CODES.map((country) => (
@@ -112,7 +118,7 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
             required
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            placeholder="e.g. 98765 43210" 
+            placeholder="e.g. 98765 43210 or +91 98765 43210" 
             className="flex-1 w-full px-4 py-3 rounded-lg border border-white/30 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition"
           />
         </div>
