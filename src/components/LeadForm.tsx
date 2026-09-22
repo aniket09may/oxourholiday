@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { submitLead } from "@/actions/submitLead";
-import { isValidPhoneNumber } from "libphonenumber-js";
+import { isValidPhoneNumber, CountryCode } from "libphonenumber-js";
 
 interface LeadFormProps {
   destinations?: string[];
@@ -30,7 +30,7 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
       destination: destinations.length > 0 ? destinations[0] : "custom",
     });
     const [countryCode, setCountryCode] = useState("+91");
-    const [selectedCountry, setSelectedCountry] = useState("IN");
+    const [selectedCountry, setSelectedCountry] = useState<CountryCode>("IN");
     const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -45,7 +45,7 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
       // Validate phone number using libphonenumber-js
       const phoneValue = formData.phone;
       
-      if (!isValidPhoneNumber(phoneValue, selectedCountry)) {
+      if (!isValidPhoneNumber(phoneValue, selectedCountry as CountryCode)) {
         setError("Please enter a valid mobile number for the selected country.");
         setIsSubmitting(false);
         return;
