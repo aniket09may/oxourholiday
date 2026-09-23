@@ -152,7 +152,7 @@ async function seedPackages() {
     
     if (data) {
       console.log("📦 Created packages:");
-      data.forEach((pkg: any) => {
+      data.forEach((pkg) => {
         console.log(`   ✓ ${pkg.title} (${pkg.slug})`);
       });
     }

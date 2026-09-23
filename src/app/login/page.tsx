@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -9,8 +10,8 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setError('');
     setIsLoading(true);
 
@@ -20,112 +21,64 @@ export default function LoginPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
-
       const data = await response.json();
 
-      if (response.ok) {
-        router.refresh();
-        // Redirect based on role
-        if (data.role === 'admin') {
-          router.push('/admin');
-        } else if (data.role === 'sales') {
-          router.push('/admin/leads');
-        }
-        router.refresh();
-      } else {
+      if (!response.ok) {
         setError(data.error || 'Invalid passcode');
+        return;
       }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
+
+      router.push(data.role === 'admin' ? '/admin' : '/admin/leads');
+      router.refresh();
+    } catch {
+      setError('Unable to sign in. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 px-4">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAtMS4xLS45LTItMi0ycy0yIC45LTIgMiAuOSAyIDIgMiAyLS45IDItMnptLTYgMGMwLTEuMS0uOS0yLTItMnMtMiAuOS0yIDIgLjkgMiAyIDIgMi0uOSAyLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30" />
-      
-      {/* Glassmorphism Card */}
-      <div className="relative w-full max-w-md">
-        <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-8">
-          {/* Logo/Title */}
-          <div className="text-center mb-8">
-            <h1 
-              className="text-4xl font-bold text-white mb-2" 
-              style={{ fontFamily: 'var(--font-playfair)' }}
-            >
-              Oxour Holiday
-            </h1>
-            <p className="text-slate-300 text-sm">Admin Portal</p>
-          </div>
+    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-[#071b27] px-5 pb-16 pt-34 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(20,184,166,.17),transparent_28%),radial-gradient(circle_at_85%_80%,rgba(245,158,11,.14),transparent_25%)]" />
+      <div className="floating-orb absolute left-[8%] top-[22%] h-36 w-36 rounded-full border border-white/10 bg-white/5 blur-xl" />
 
-          {/* Login Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label 
-                htmlFor="password" 
-                className="block text-sm font-medium text-slate-200 mb-2"
-              >
-                Access Code
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
-                placeholder="Enter your passcode"
-                required
-                disabled={isLoading}
-              />
-            </div>
+      <div className="glass-panel animate-fade-up relative w-full max-w-md rounded-[2rem] p-7 sm:p-9">
+        <div className="mb-8 text-center">
+          <span className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-full border border-amber-300/40 bg-amber-300/10 font-bold text-amber-200">O</span>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">Team access</p>
+          <h1 className="text-4xl">Welcome back</h1>
+          <p className="mt-2 text-sm text-white/55">Sign in to manage leads and holiday packages.</p>
+        </div>
 
-            {error && (
-              <div className="bg-red-500/20 border border-red-500/50 text-red-100 px-4 py-3 rounded-lg text-sm">
-                {error}
-              </div>
-            )}
-
-            <button
-              type="submit"
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label htmlFor="password" className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-white/70">Access code</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="field-control"
+              placeholder="Enter your secure passcode"
+              autoComplete="current-password"
+              maxLength={256}
+              required
               disabled={isLoading}
-              className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            >
-              {isLoading ? (
-                <>
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Signing in...
-                </>
-              ) : (
-                <>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                  </svg>
-                  Sign In
-                </>
-              )}
-            </button>
-          </form>
-
-          {/* Footer */}
-          <div className="mt-6 text-center">
-            <a 
-              href="/" 
-              className="text-sm text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Website
-            </a>
+            />
           </div>
+
+          {error && <div className="rounded-xl border border-red-300/30 bg-red-400/10 px-4 py-3 text-sm text-red-100" role="alert">{error}</div>}
+
+          <button type="submit" disabled={isLoading} className="flex w-full items-center justify-center gap-2 rounded-full bg-amber-300 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-xl transition hover:-translate-y-0.5 hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60">
+            {isLoading && <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-500/40 border-t-slate-900" />}
+            {isLoading ? 'Signing in…' : 'Open team workspace'}
+          </button>
+        </form>
+
+        <div className="mt-7 border-t border-white/10 pt-6 text-center">
+          <Link href="/" className="text-sm text-white/55 transition hover:text-white">← Back to website</Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

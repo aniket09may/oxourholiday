@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
+/* eslint-disable @next/next/no-img-element */
 import { notFound } from 'next/navigation';
 import LeadForm from '@/components/LeadForm';
 
@@ -30,7 +31,7 @@ export default async function DestinationPage({ params }: PageProps) {
     .order('title', { ascending: true });
 
   return (
-    <main className="flex min-h-screen flex-col bg-white">
+    <main className="flex min-h-screen flex-col bg-white pt-18">
       {/* Hero Section with Package Image */}
       <section className="relative w-full h-[60vh] bg-slate-950">
         <img 
@@ -136,7 +137,7 @@ export default async function DestinationPage({ params }: PageProps) {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-                    What's Included
+                    What&apos;s Included
                   </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
@@ -173,7 +174,7 @@ export default async function DestinationPage({ params }: PageProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-                    What's Not Included
+                    What&apos;s Not Included
                   </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
@@ -227,7 +228,7 @@ export default async function DestinationPage({ params }: PageProps) {
       <section className="py-12 px-6 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto text-center">
           <Link 
-            href="/#destinations" 
+            href="/#packages"
             className="inline-flex items-center gap-2 text-slate-700 hover:text-slate-900 font-semibold transition"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

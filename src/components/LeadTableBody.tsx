@@ -56,14 +56,14 @@ export default function LeadTableBody({ leads, updateLead }: LeadTableBodyProps)
               <select
                 key={lead.status}
                 name="value"
-                defaultValue={lead.status || 'New'}
+                defaultValue={lead.status?.toLowerCase() || 'new'}
                 onChange={(e) => e.currentTarget.form?.requestSubmit()}
                 className="text-xs font-medium rounded-md border-slate-300 focus:border-blue-500 focus:ring-blue-500 py-1 px-2"
               >
-                <option value="New">New</option>
-                <option value="Contacted">Contacted</option>
-                <option value="Won">Won</option>
-                <option value="Lost">Lost</option>
+                <option value="new">New</option>
+                <option value="contacted">Contacted</option>
+                <option value="won">Won</option>
+                <option value="lost">Lost</option>
               </select>
             </form>
           </td>

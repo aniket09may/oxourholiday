@@ -1,13 +1,21 @@
-import { supabase } from '@/lib/supabase';
 import AddPackageForm from '@/components/AddPackageForm';
 import PackagesTable from '@/components/PackagesTable';
+import { authorize } from '@/lib/auth';
+import { supabaseAdmin } from '@/lib/supabase-admin';
+import { redirect } from 'next/navigation';
 
 export const revalidate = 0; // Don't cache this page
 export const dynamic = 'force-dynamic';
 
 export default async function AdminPage() {
+  const session = await authorize(['admin']);
+
+  if (!session) {
+    redirect('/admin/leads');
+  }
+
   // Fetch all packages (including inactive ones)
-  const { data: packages, error } = await supabase
+  const { data: packages, error } = await supabaseAdmin
     .from('packages')
     .select('*')
     .order('created_at', { ascending: false });

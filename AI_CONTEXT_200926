@@ -2,8 +2,8 @@
 1. **Authentication:** Fixed Next.js 15 async `await cookies()`. Admin and Sales logins are fully functional.
 2. **Lead Form:** Ghost `wa.me` redirect removed. Form now silently submits to Supabase and triggers a Resend email to the admin.
 3. **CRM Dashboard:** Implemented a zero-cost WhatsApp workflow. Sales reps can click a lead's number to instantly open a pre-filled WhatsApp Web chat.
-4. **Current Blocker to Check Next:** Form says "Success", but lead isn't in the dashboard. Need to check Supabase Table Editor and disable Row Level Security (RLS) on the `leads` table.
+4. **Security Note:** Keep Row Level Security enabled. Apply the least-privilege policies in `supabase/rls-policies.sql` and configure the server-only service-role key for admin operations.
 5. **Next Steps:** 
-   - Verify Supabase RLS and confirm lead inserts.
+   - Apply and verify the least-privilege Supabase RLS policies.
    - Implement Strikethrough Pricing (`regular_price`) on packages.
    - Deploy to Vercel.

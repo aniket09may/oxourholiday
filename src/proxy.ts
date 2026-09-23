@@ -1,20 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { SESSION_COOKIE, verifySessionToken } from '@/lib/session';
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const session = await verifySessionToken(request.cookies.get(SESSION_COOKIE)?.value);
   
-  // Get the user_role cookie
-  const userRole = request.cookies.get('user_role')?.value;
-  
-  // If no user_role cookie exists, redirect to login
-  if (!userRole) {
+  if (!session) {
     const loginUrl = new URL('/login', request.url);
+    loginUrl.searchParams.set('next', pathname);
     return NextResponse.redirect(loginUrl);
   }
   
-  // If user is sales and trying to access /admin (package CMS), redirect to /admin/leads
-  if (userRole === 'sales' && pathname === '/admin') {
+  if (session.role === 'sales' && pathname === '/admin') {
     const leadsUrl = new URL('/admin/leads', request.url);
     return NextResponse.redirect(leadsUrl);
   }

@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+/* eslint-disable @next/next/no-img-element */
+
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface Package {
@@ -24,34 +26,17 @@ interface EditPackageModalProps {
 export default function EditPackageModal({ package: pkg, isOpen, onClose }: EditPackageModalProps) {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    title: '',
-    slug: '',
-    price: '',
-    regular_price: '',
-    duration: '',
-    image_url: '',
-    highlights: '',
-    description: '',
+    title: pkg.title || '',
+    slug: pkg.slug || '',
+    price: pkg.price?.toString() || '',
+    regular_price: pkg.regular_price?.toString() || '',
+    duration: pkg.duration || '',
+    image_url: pkg.image_url || '',
+    highlights: Array.isArray(pkg.highlights) ? pkg.highlights.join(', ') : '',
+    description: pkg.description || '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
-
-  // Populate form when modal opens or package changes
-  useEffect(() => {
-    if (isOpen && pkg) {
-      setFormData({
-        title: pkg.title || '',
-        slug: pkg.slug || '',
-        price: pkg.price?.toString() || '',
-        regular_price: pkg.regular_price?.toString() || '',
-        duration: pkg.duration || '',
-        image_url: pkg.image_url || '',
-        highlights: Array.isArray(pkg.highlights) ? pkg.highlights.join(', ') : '',
-        description: pkg.description || '',
-      });
-      setMessage(null);
-    }
-  }, [isOpen, pkg]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

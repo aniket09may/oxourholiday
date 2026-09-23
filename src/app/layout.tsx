@@ -17,7 +17,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Oxour Holiday - Curated Southeast Asian Escapes",
+  title: {
+    default: "Oxour Holiday | Curated Southeast Asian Escapes",
+    template: "%s | Oxour Holiday",
+  },
   description: "Premium international tour packages to Thailand, Vietnam, Bali, and Malaysia. Transparent pricing, full visa assistance, and 24/7 support.",
 };
 
@@ -25,38 +28,37 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans" style={{ fontFamily: 'var(--font-inter)' }}>
+      <body className="min-h-full flex flex-col font-sans">
         <Navbar />
         {children}
         
-        <footer className="bg-slate-900 text-white py-12 mt-20">
+        <footer className="mt-auto border-t border-white/10 bg-slate-950 py-14 text-white">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Brand Column */}
+            <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
               <div>
-                <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  Oxour Holiday
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="grid h-9 w-9 place-items-center rounded-full border border-amber-300/40 bg-amber-300/10 text-sm font-bold text-amber-200">O</span>
+                  <h3 className="text-2xl font-bold">Oxour Holiday</h3>
+                </div>
+                <p className="max-w-md text-sm leading-relaxed text-slate-400">
                   Your trusted partner for unforgettable Southeast Asian adventures. We deliver premium experiences with transparency and care.
                 </p>
               </div>
 
-              {/* Contact Column */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+                <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/80">Contact</h4>
                 <div className="space-y-2 text-sm text-slate-400">
-                  <p>📞 +91 98765 43210</p>
-                  <p>📞 +91 87654 32109</p>
-                  <p>✉️ hello@oxourholiday.com</p>
+                  <p>+91 98765 43210</p>
+                  <p>+91 87654 32109</p>
+                  <p>hello@oxourholiday.com</p>
                 </div>
               </div>
 
-              {/* Location Column */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Our Location</h4>
+                <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/80">Our office</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
                   123 MG Road, Connaught Place<br />
                   New Delhi, Delhi 110001<br />
@@ -65,8 +67,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-slate-800 text-center text-sm text-slate-500">
-              © {new Date().getFullYear()} Oxour Holiday. All rights reserved.
+            <div className="mt-12 flex flex-col justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row">
+              <span>© {new Date().getFullYear()} Oxour Holiday. All rights reserved.</span>
+              <span>Travel thoughtfully. Explore beautifully.</span>
             </div>
           </div>
         </footer>

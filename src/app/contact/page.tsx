@@ -1,110 +1,62 @@
-import LeadForm from "@/components/LeadForm";
+import LeadForm from '@/components/LeadForm';
+
+const contactItems = [
+  { label: 'Customer support', value: '+91 98765 43210', detail: 'Trip support and general questions' },
+  { label: 'Sales inquiries', value: '+91 87654 32109', detail: 'New itineraries and quotations' },
+  { label: 'Email', value: 'hello@oxourholiday.com', detail: 'We normally reply the same business day' },
+];
 
 export default function ContactPage() {
   return (
-    <main className="pt-20 pb-16">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-            Get in Touch
-          </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Ready to start your journey? Reach out to us and let's plan your perfect Southeast Asian escape.
-          </p>
+    <main className="min-h-screen bg-[linear-gradient(180deg,#f8fafc_0%,#fff_45%)] pt-18">
+      <section className="relative overflow-hidden bg-[#08202c] px-6 py-20 text-white sm:py-24">
+        <div className="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-teal-400/10 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl">
+          <p className="animate-fade-up mb-4 text-xs font-bold uppercase tracking-[0.2em] text-amber-300">Talk to a travel expert</p>
+          <h1 className="animate-fade-up animation-delay-150 max-w-4xl text-balance text-5xl leading-tight sm:text-6xl">Let&apos;s turn the trip in your head into a plan you can book.</h1>
+          <p className="animate-fade-up animation-delay-300 mt-6 max-w-2xl text-base leading-8 text-white/65">Share the basics today. We will come back with thoughtful questions, practical advice, and a clear next step.</p>
         </div>
+      </section>
 
-        {/* Split Screen Layout */}
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Contact Information */}
+      <section className="px-6 py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
           <div className="space-y-8">
-            {/* Office Address */}
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
-              <h2 className="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                📍 Our Office
-              </h2>
-              <p className="text-slate-700 leading-relaxed">
-                123 MG Road, Connaught Place<br />
-                New Delhi, Delhi 110001<br />
-                India
-              </p>
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-teal-700">Reach us directly</p>
+              <h2 className="text-4xl text-slate-950">Real people, ready to help.</h2>
+              <p className="mt-4 max-w-lg text-sm leading-7 text-slate-600">Whether you have a destination in mind or only a few holiday dates, that is enough to begin.</p>
             </div>
 
-            {/* Operating Hours */}
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
-              <h2 className="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                🕒 Operating Hours
-              </h2>
-              <div className="space-y-2 text-slate-700">
-                <p><span className="font-medium">Monday - Friday:</span> 9:00 AM - 7:00 PM</p>
-                <p><span className="font-medium">Saturday:</span> 10:00 AM - 5:00 PM</p>
-                <p><span className="font-medium">Sunday:</span> Closed</p>
-              </div>
+            <div className="grid gap-4">
+              {contactItems.map((item) => (
+                <div key={item.label} className="card-lift rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">{item.label}</p>
+                  <p className="mt-2 text-lg font-semibold text-slate-950">{item.value}</p>
+                  <p className="mt-1 text-sm text-slate-500">{item.detail}</p>
+                </div>
+              ))}
             </div>
 
-            {/* Contact Details */}
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
-              <h2 className="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                📞 Direct Lines
-              </h2>
-              <div className="space-y-3 text-slate-700">
+            <div className="rounded-2xl bg-slate-100 p-6">
+              <div className="flex items-start gap-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-lg shadow-sm" aria-hidden="true">⌖</span>
                 <div>
-                  <p className="font-medium text-sm text-slate-500 uppercase tracking-wide">Customer Support</p>
-                  <p className="text-lg">+91 98765 43210</p>
+                  <h3 className="text-xl text-slate-950">Visit our office</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">123 MG Road, Connaught Place<br />New Delhi, Delhi 110001, India</p>
+                  <p className="mt-3 text-xs font-semibold text-slate-500">Monday–Friday, 9 AM–7 PM · Saturday, 10 AM–5 PM</p>
                 </div>
-                <div>
-                  <p className="font-medium text-sm text-slate-500 uppercase tracking-wide">Sales Inquiries</p>
-                  <p className="text-lg">+91 87654 32109</p>
-                </div>
-                <div>
-                  <p className="font-medium text-sm text-slate-500 uppercase tracking-wide">Email</p>
-                  <p className="text-lg">hello@oxourholiday.com</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Map Placeholder */}
-            <div className="rounded-2xl bg-slate-100 h-64 flex items-center justify-center border border-slate-200">
-              <div className="text-center text-slate-500">
-                <svg 
-                  className="w-12 h-12 mx-auto mb-3 text-slate-400" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" 
-                  />
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" 
-                  />
-                </svg>
-                <p className="text-sm font-medium">Google Maps Embed</p>
-                <p className="text-xs mt-1">(Placeholder)</p>
               </div>
             </div>
           </div>
 
-          {/* Right Side - Lead Form */}
-          <div className="sticky top-24">
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl p-8">
-              <h2 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
-                Send Us a Message
-              </h2>
-              <p className="text-blue-100 mb-6 text-sm">
-                Fill out the form below and we'll connect with you on WhatsApp instantly.
-              </p>
-              <LeadForm />
-            </div>
+          <div className="glass-panel sticky top-26 rounded-[2rem] bg-[#0b3444]/95 p-6 text-white sm:p-9">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">Your complimentary consultation</p>
+            <h2 className="text-3xl">Tell us what would make this trip special.</h2>
+            <p className="mb-7 mt-3 text-sm leading-6 text-white/60">We will review your request and follow up on WhatsApp with the right options.</p>
+            <LeadForm />
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

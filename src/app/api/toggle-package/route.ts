@@ -2,9 +2,8 @@ import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { authorize } from '@/lib/auth';
 import { supabaseAdmin } from '@/lib/supabase-admin';
-import { validatePackageInput } from '@/lib/validation';
 
-export async function PUT(request: Request) {
+export async function PATCH(request: Request) {
   const session = await authorize(['admin']);
 
   if (!session) {
@@ -14,34 +13,27 @@ export async function PUT(request: Request) {
   try {
     const body = await request.json();
     const id = typeof body.id === 'string' ? body.id.slice(0, 100) : '';
-    const validated = validatePackageInput(body);
+    const isActive = body.isActive;
 
-    if (!id) {
-      return NextResponse.json({ error: 'Package ID is required.' }, { status: 400 });
+    if (!id || typeof isActive !== 'boolean') {
+      return NextResponse.json({ error: 'Invalid package update.' }, { status: 400 });
     }
 
-    if ('error' in validated) {
-      return NextResponse.json({ error: validated.error }, { status: 400 });
-    }
-
-    const { data, error } = await supabaseAdmin
+    const { error } = await supabaseAdmin
       .from('packages')
-      .update(validated.data)
-      .eq('id', id)
-      .select()
-      .single();
+      .update({ is_active: isActive })
+      .eq('id', id);
 
     if (error) {
-      console.error('Failed to update package:', error);
+      console.error('Failed to toggle package:', error);
       return NextResponse.json({ error: 'Failed to update package.' }, { status: 500 });
     }
 
     revalidatePath('/');
     revalidatePath('/admin');
-    revalidatePath(`/destinations/${validated.data.slug}`);
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Update package API error:', error);
+    console.error('Toggle package API error:', error);
     return NextResponse.json({ error: 'Unable to update package.' }, { status: 500 });
   }
 }

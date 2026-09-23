@@ -1,44 +1,49 @@
-import { supabase } from '@/lib/supabase';
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import LeadTableBody from '@/components/LeadTableBody';
 import LeadFilters from '@/components/LeadFilters';
+import { authorize } from '@/lib/auth';
+import { supabaseAdmin } from '@/lib/supabase-admin';
 
 export const revalidate = 0; // Don't cache this page
 export const dynamic = 'force-dynamic';
 
-interface Lead {
-  id: string;
-  name: string;
-  phone: string;
-  destination: string;
-  status: string;
-  sales_rep: string | null;
-  notes: string | null;
-  created_at: string;
-}
-
 // Server Action to update lead
 async function updateLead(formData: FormData) {
   'use server';
+
+  const session = await authorize(['admin', 'sales']);
+
+  if (!session) {
+    return { error: 'Unauthorized' };
+  }
   
   const leadId = formData.get('leadId') as string;
   const field = formData.get('field') as string;
-  const value = formData.get('value') as string;
+  const rawValue = formData.get('value');
+  const value = typeof rawValue === 'string' ? rawValue.trim() : '';
+  const allowedFields = ['status', 'sales_rep', 'notes'] as const;
 
-  if (!leadId || !field) {
+  if (!leadId || !allowedFields.includes(field as (typeof allowedFields)[number])) {
     return { error: 'Missing required fields' };
   }
 
-  const { error } = await supabase
+  if (field === 'status' && !['new', 'contacted', 'won', 'lost'].includes(value)) {
+    return { error: 'Invalid lead status' };
+  }
+
+  if ((field === 'sales_rep' && value.length > 100) || (field === 'notes' && value.length > 500)) {
+    return { error: 'Value is too long' };
+  }
+
+  const { error } = await supabaseAdmin
     .from('leads')
     .update({ [field]: value })
     .eq('id', leadId);
 
   if (error) {
     console.error('Error updating lead:', error);
-    return { error: error.message };
+    return { error: 'Unable to update the lead.' };
   }
 
   revalidatePath('/admin/leads');
@@ -50,11 +55,9 @@ interface LeadsPageProps {
 }
 
 export default async function LeadsPage({ searchParams }: LeadsPageProps) {
-  // Verify user is authenticated (redundant with middleware, but good practice)
-  const cookieStore = await cookies();
-  const userRole = cookieStore.get('user_role')?.value;
+  const session = await authorize(['admin', 'sales']);
 
-  if (!userRole) {
+  if (!session) {
     redirect('/login');
   }
 
@@ -64,7 +67,7 @@ export default async function LeadsPage({ searchParams }: LeadsPageProps) {
   const statusFilter = params.status || '';
 
   // Fetch all leads from Supabase
-  const { data: allLeads, error } = await supabase
+  const { data: allLeads, error } = await supabaseAdmin
     .from('leads')
     .select('*')
     .order('created_at', { ascending: false });

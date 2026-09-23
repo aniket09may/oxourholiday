@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { authorize } from '@/lib/auth';
+import { supabaseAdmin } from '@/lib/supabase-admin';
 
 /**
  * Database Connection Test Endpoint
@@ -11,6 +12,12 @@ import { supabase } from '@/lib/supabase';
  * 3. Packages table exists and has data
  */
 export async function GET() {
+  const session = await authorize(['admin']);
+
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     // Test 1: Check environment variables
     const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -29,7 +36,7 @@ export async function GET() {
     }
 
     // Test 2: Fetch packages
-    const { data: packages, error } = await supabase
+    const { data: packages, error } = await supabaseAdmin
       .from('packages')
       .select('id, title, slug, is_active, price, duration')
       .order('created_at', { ascending: false });
@@ -84,8 +91,7 @@ export async function GET() {
     return NextResponse.json({
       success: false,
       error: 'Unexpected error',
-      details: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 }

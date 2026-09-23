@@ -1,26 +1,25 @@
-import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import LogoutButton from '@/components/LogoutButton';
+import { getSession } from '@/lib/auth';
 
 export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Get the user role from cookies
-  const cookieStore = await cookies();
-  const userRole = cookieStore.get('user_role')?.value;
+  const session = await getSession();
 
-  // If no role (shouldn't happen due to middleware, but as a fallback)
-  if (!userRole) {
+  if (!session) {
     redirect('/login');
   }
 
+  const userRole = session.role;
+
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 pt-18">
       {/* Admin Header/Navigation */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+      <header className="sticky top-18 z-40 border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Brand */}

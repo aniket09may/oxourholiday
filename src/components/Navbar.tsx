@@ -1,34 +1,56 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
+
+const links = [
+  { href: '/#packages', label: 'Destinations' },
+  { href: '/#why-us', label: 'Why Oxour' },
+  { href: '/contact', label: 'Contact' },
+];
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="absolute top-0 w-full z-50 bg-transparent">
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <div className="flex">
-            <Link href="/" className="flex items-center text-2xl font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Oxour <span className="text-blue-400">Holiday</span>
-            </Link>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/#packages" className="text-white hover:text-blue-300 transition-colors font-medium">
-              Destinations
-            </Link>
-            <Link href="/#about" className="text-white hover:text-blue-300 transition-colors font-medium">
-              About
-            </Link>
-            <Link href="/contact" className="text-white hover:text-blue-300 transition-colors font-medium">
-              Contact
-            </Link>
-            <Link
-              href="#contact"
-              className="bg-white text-slate-900 hover:bg-slate-100 rounded-full px-6 py-2.5 text-sm font-semibold transition-colors"
-            >
-              Get Free Quote
-            </Link>
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/82 text-white shadow-[0_8px_30px_rgba(2,12,27,0.12)] backdrop-blur-xl">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-6">
+        <Link href="/" className="group flex items-center gap-3" onClick={() => setIsOpen(false)}>
+          <span className="grid h-9 w-9 place-items-center rounded-full border border-amber-300/50 bg-amber-300/10 text-sm font-bold text-amber-200 transition group-hover:rotate-6 group-hover:bg-amber-300/20">O</span>
+          <span className="text-xl font-bold tracking-tight sm:text-2xl" style={{ fontFamily: 'var(--font-playfair)' }}>
+            Oxour <span className="text-amber-300">Holiday</span>
+          </span>
+        </Link>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className="text-sm font-medium text-white/75 transition hover:text-white">{link.label}</Link>
+          ))}
+          <Link href="/#quote" className="rounded-full bg-amber-300 px-5 py-2.5 text-sm font-bold text-slate-950 shadow-lg shadow-amber-950/20 transition hover:-translate-y-0.5 hover:bg-amber-200">Plan my trip</Link>
+        </div>
+
+        <button
+          type="button"
+          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 md:hidden"
+          onClick={() => setIsOpen((current) => !current)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+          aria-label="Toggle navigation"
+        >
+          <span className="text-xl" aria-hidden="true">{isOpen ? '×' : '☰'}</span>
+        </button>
+      </div>
+
+      {isOpen && (
+        <div id="mobile-navigation" className="animate-fade-in border-t border-white/10 bg-slate-950 px-5 py-5 md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2">
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} className="rounded-xl px-4 py-3 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-white" onClick={() => setIsOpen(false)}>{link.label}</Link>
+            ))}
+            <Link href="/#quote" className="mt-2 rounded-xl bg-amber-300 px-4 py-3 text-center text-sm font-bold text-slate-950" onClick={() => setIsOpen(false)}>Plan my trip</Link>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
