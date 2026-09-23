@@ -26,7 +26,7 @@ export default function Navbar() {
           {links.map((link) => (
             <Link key={link.href} href={link.href} className="text-sm font-medium text-white/75 transition hover:text-white">{link.label}</Link>
           ))}
-          <Link href="/#quote" className="rounded-full bg-amber-300 px-5 py-2.5 text-sm font-bold text-slate-950 shadow-lg shadow-amber-950/20 transition hover:-translate-y-0.5 hover:bg-amber-200">Plan my trip</Link>
+          <Link href="/#quote" className="rounded-full border border-[#d7ad67]/55 bg-white/[.04] px-5 py-2.5 text-sm font-semibold text-[#ead5aa] transition duration-300 hover:-translate-y-0.5 hover:border-[#d7ad67] hover:bg-white/[.09] hover:text-white">Plan my trip</Link>
         </div>
 
         <button
@@ -47,7 +47,7 @@ export default function Navbar() {
             {links.map((link) => (
               <Link key={link.href} href={link.href} className="rounded-xl px-4 py-3 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-white" onClick={() => setIsOpen(false)}>{link.label}</Link>
             ))}
-            <Link href="/#quote" className="mt-2 rounded-xl bg-amber-300 px-4 py-3 text-center text-sm font-bold text-slate-950" onClick={() => setIsOpen(false)}>Plan my trip</Link>
+            <Link href="/#quote" className="mt-2 rounded-xl border border-[#d7ad67]/55 bg-white/[.04] px-4 py-3 text-center text-sm font-semibold text-[#ead5aa]" onClick={() => setIsOpen(false)}>Plan my trip</Link>
           </div>
         </div>
       )}

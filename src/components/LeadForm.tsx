@@ -193,7 +193,7 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_12px_30px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-amber-50 hover:shadow-[0_16px_38px_rgba(0,0,0,0.24)] disabled:cursor-not-allowed disabled:opacity-60"
+        className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#d7ad67] px-6 py-3.5 text-sm font-bold text-[#15232b] shadow-[0_14px_34px_rgba(13,20,24,0.26)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e5c582] hover:shadow-[0_18px_42px_rgba(13,20,24,0.32)] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isSubmitting ? (
           <>
@@ -208,9 +208,10 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
         )}
       </button>
 
-      <p className="text-center text-[11px] leading-relaxed text-white/60">
-        No spam. Your details are used only to plan your trip.
-      </p>
+      <div className="space-y-1 text-center text-[11px] leading-relaxed">
+        <p className="font-semibold text-[#ead5aa]">⚡ We typically reply within 15 minutes</p>
+        <p className="text-white/52">No spam. Your details are used only to plan your trip.</p>
+      </div>
     </form>
   );
 }

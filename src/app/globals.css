@@ -6,8 +6,8 @@
   --ink: #102033;
   --ocean: #0e7490;
   --teal: #0f766e;
-  --sand: #f6ead7;
-  --gold: #f59e0b;
+  --sand: #ead8b0;
+  --gold: #d7ad67;
 }
 
 @theme inline {
@@ -49,27 +49,28 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 
 .field-control {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.96);
-  color: #0f172a;
+  background: rgba(247, 244, 237, 0.88);
+  color: #15232b;
   padding: 0.78rem 1rem;
   font-size: 0.875rem;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 8px 24px rgba(5, 18, 27, 0.08);
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .field-control:focus {
-  border-color: rgba(245, 158, 11, 0.9);
-  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.14), 0 10px 28px rgba(15, 23, 42, 0.12);
+  border-color: rgba(215, 173, 103, 0.92);
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: 0 0 0 4px rgba(215, 173, 103, 0.15), 0 10px 28px rgba(5, 18, 27, 0.12);
   outline: none;
 }
 
 .glass-panel {
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(8, 30, 43, 0.72);
-  box-shadow: 0 30px 80px rgba(2, 20, 32, 0.32);
-  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.19);
+  background: linear-gradient(145deg, rgba(11, 30, 40, 0.62), rgba(10, 25, 35, 0.48));
+  box-shadow: 0 30px 80px rgba(2, 15, 24, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(120%);
 }
 
 .card-lift {
