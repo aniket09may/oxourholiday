@@ -98,9 +98,9 @@ export default function EditPackageModal({ package: pkg, isOpen, onClose }: Edit
       
       {/* Modal */}
       <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+        <div className="premium-card relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl shadow-2xl">
           {/* Header */}
-          <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 flex items-center justify-between">
+          <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#d7ad67]/18 bg-[#fffdf9]/95 px-8 py-6 backdrop-blur-xl">
             <div>
               <h2 className="text-2xl font-bold text-slate-900" style={{ fontFamily: 'var(--font-playfair)' }}>
                 Edit Package
@@ -307,7 +307,7 @@ export default function EditPackageModal({ package: pkg, isOpen, onClose }: Edit
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-slate-900 text-white px-8 py-2.5 rounded-lg font-semibold hover:bg-slate-800 transition disabled:bg-slate-400 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="accent-button flex items-center gap-2 rounded-full px-8 py-2.5 font-semibold disabled:cursor-not-allowed disabled:bg-slate-400"
                 >
                   {isSubmitting ? (
                     <>

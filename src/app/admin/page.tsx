@@ -25,7 +25,7 @@ export default async function AdminPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 py-12 px-6">
+    <main className="min-h-screen px-6 py-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -39,7 +39,7 @@ export default async function AdminPage() {
 
         {/* Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="premium-card rounded-2xl p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-1">Total Packages</p>
@@ -53,7 +53,7 @@ export default async function AdminPage() {
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="premium-card rounded-2xl p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-1">Active Packages</p>
@@ -69,7 +69,7 @@ export default async function AdminPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="premium-card rounded-2xl p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-1">Inactive Packages</p>
@@ -94,7 +94,7 @@ export default async function AdminPage() {
 
         {/* Highlights Preview */}
         {packages && packages.length > 0 && (
-          <div className="mt-8 bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+          <div className="premium-card mt-8 rounded-2xl p-6">
             <h2 className="text-2xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
               Package Highlights Preview
             </h2>

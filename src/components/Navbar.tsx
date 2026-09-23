@@ -13,12 +13,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/82 text-white shadow-[0_8px_30px_rgba(2,12,27,0.12)] backdrop-blur-xl">
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#061b26]/92 text-white shadow-[0_8px_30px_rgba(2,12,27,0.12)] backdrop-blur-xl">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-6">
         <Link href="/" className="group flex items-center gap-3" onClick={() => setIsOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-full border border-amber-300/50 bg-amber-300/10 text-sm font-bold text-amber-200 transition group-hover:rotate-6 group-hover:bg-amber-300/20">O</span>
+          <span className="grid h-9 w-9 place-items-center rounded-full border border-[#d7ad67]/55 bg-[#d7ad67]/10 text-sm font-bold text-[#e8cf9b] transition group-hover:rotate-6 group-hover:bg-[#d7ad67]/20">O</span>
           <span className="text-xl font-bold tracking-tight sm:text-2xl" style={{ fontFamily: 'var(--font-playfair)' }}>
-            Oxour <span className="text-amber-300">Holiday</span>
+            Oxour <span className="text-[#d7ad67]">Holiday</span>
           </span>
         </Link>
 
@@ -42,7 +42,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div id="mobile-navigation" className="animate-fade-in border-t border-white/10 bg-slate-950 px-5 py-5 md:hidden">
+        <div id="mobile-navigation" className="animate-fade-in border-t border-white/10 bg-[#061b26] px-5 py-5 md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-2">
             {links.map((link) => (
               <Link key={link.href} href={link.href} className="rounded-xl px-4 py-3 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-white" onClick={() => setIsOpen(false)}>{link.label}</Link>

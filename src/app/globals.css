@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #102033;
-  --ink: #102033;
-  --ocean: #0e7490;
-  --teal: #0f766e;
+  --background: #f8f5ee;
+  --foreground: #15232b;
+  --ink: #15232b;
+  --ocean: #0b3444;
+  --teal: #175b5b;
   --sand: #ead8b0;
   --gold: #d7ad67;
+  --gold-light: #e8cf9b;
+  --cream: #f8f5ee;
+  --ocean-deep: #061b26;
+  --line: rgba(21, 35, 43, 0.12);
 }
 
 @theme inline {
@@ -32,7 +36,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: #a7f3d0; color: #083344; }
+::selection { background: var(--sand); color: var(--ocean-deep); }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), serif;
@@ -71,6 +75,77 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
   background: linear-gradient(145deg, rgba(11, 30, 40, 0.62), rgba(10, 25, 35, 0.48));
   box-shadow: 0 30px 80px rgba(2, 15, 24, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px) saturate(120%);
+}
+
+.dark-glass-panel {
+  background: linear-gradient(145deg, rgba(6, 34, 46, 0.96), rgba(9, 44, 55, 0.91));
+}
+
+.premium-page {
+  background:
+    radial-gradient(circle at 85% 8%, rgba(215, 173, 103, 0.12), transparent 24rem),
+    linear-gradient(180deg, #f8f5ee 0%, #fffdf9 48%, #f5f1e8 100%);
+}
+
+.premium-card {
+  border: 1px solid rgba(21, 35, 43, 0.11);
+  background: rgba(255, 253, 249, 0.9);
+  box-shadow: 0 18px 48px rgba(6, 27, 38, 0.08);
+}
+
+.accent-button {
+  background: var(--gold);
+  color: var(--ocean-deep);
+  box-shadow: 0 14px 32px rgba(71, 52, 24, 0.18);
+  transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.accent-button:hover {
+  background: var(--gold-light);
+  box-shadow: 0 18px 40px rgba(71, 52, 24, 0.24);
+  transform: translateY(-2px);
+}
+
+.eyebrow {
+  color: #9a6f31;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.admin-shell {
+  background:
+    radial-gradient(circle at 90% 5%, rgba(215, 173, 103, 0.13), transparent 25rem),
+    linear-gradient(180deg, #f3eee4 0%, #faf8f3 100%);
+  color: var(--ink);
+}
+
+.admin-shell .bg-slate-50 { background-color: rgba(248, 245, 238, 0.78); }
+.admin-shell .bg-white { background-color: rgba(255, 253, 249, 0.94); }
+.admin-shell .border-slate-200 { border-color: rgba(21, 35, 43, 0.11); }
+.admin-shell .border-slate-300 { border-color: rgba(21, 35, 43, 0.18); }
+.admin-shell .bg-blue-100,
+.admin-shell .bg-emerald-100 { background-color: rgba(215, 173, 103, 0.17); }
+.admin-shell .text-blue-600,
+.admin-shell .text-blue-800,
+.admin-shell .text-emerald-600,
+.admin-shell .text-emerald-800 { color: #8a612a; }
+.admin-shell .shadow-sm { box-shadow: 0 16px 44px rgba(6, 27, 38, 0.06); }
+.admin-shell input:not([type="hidden"]),
+.admin-shell select,
+.admin-shell textarea {
+  border: 1px solid rgba(21, 35, 43, 0.18);
+  background: rgba(255, 253, 249, 0.96);
+  color: var(--ink);
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+.admin-shell input:not([type="hidden"]):focus,
+.admin-shell select:focus,
+.admin-shell textarea:focus {
+  border-color: rgba(215, 173, 103, 0.95);
+  box-shadow: 0 0 0 4px rgba(215, 173, 103, 0.14);
+  outline: none;
 }
 
 .card-lift {

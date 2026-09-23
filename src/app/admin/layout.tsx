@@ -17,9 +17,9 @@ export default async function AdminLayout({
   const userRole = session.role;
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-18">
+    <div className="admin-shell min-h-screen pt-18">
       {/* Admin Header/Navigation */}
-      <header className="sticky top-18 z-40 border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur-xl">
+      <header className="sticky top-18 z-40 border-b border-[#d7ad67]/20 bg-[#fffdf9]/90 shadow-sm backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Brand */}
@@ -29,7 +29,7 @@ export default async function AdminLayout({
                   className="text-2xl font-bold text-slate-900" 
                   style={{ fontFamily: 'var(--font-playfair)' }}
                 >
-                  Oxour Holiday
+                  Oxour <span className="text-[#a77835]">Holiday</span>
                 </h1>
               </Link>
               
@@ -39,7 +39,7 @@ export default async function AdminLayout({
                 {userRole === 'admin' && (
                   <Link
                     href="/admin"
-                    className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                    className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[#d7ad67]/10 hover:text-[#7d5727]"
                   >
                     📦 Manage Packages
                   </Link>
@@ -48,7 +48,7 @@ export default async function AdminLayout({
                 {/* Show "View Leads" for both admin and sales */}
                 <Link
                   href="/admin/leads"
-                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                  className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[#d7ad67]/10 hover:text-[#7d5727]"
                 >
                   👥 View Leads
                 </Link>
@@ -57,8 +57,8 @@ export default async function AdminLayout({
 
             {/* User Info & Logout */}
             <div className="flex items-center gap-4">
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-slate-100 rounded-full">
-                <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+              <div className="hidden items-center gap-2 rounded-full border border-[#d7ad67]/20 bg-[#d7ad67]/10 px-3 py-1.5 sm:flex">
+                <span className="h-2 w-2 rounded-full bg-[#b0823e]"></span>
                 <span className="text-sm font-medium text-slate-700 capitalize">
                   {userRole}
                 </span>
@@ -73,7 +73,7 @@ export default async function AdminLayout({
             {userRole === 'admin' && (
               <Link
                 href="/admin"
-                className="flex-1 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-center"
+                className="flex-1 rounded-lg px-3 py-2 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-[#d7ad67]/10 hover:text-[#7d5727]"
               >
                 📦 Packages
               </Link>
@@ -81,7 +81,7 @@ export default async function AdminLayout({
             
             <Link
               href="/admin/leads"
-              className="flex-1 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-center"
+              className="flex-1 rounded-lg px-3 py-2 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-[#d7ad67]/10 hover:text-[#7d5727]"
             >
               👥 Leads
             </Link>

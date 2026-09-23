@@ -70,7 +70,7 @@ export default async function Home() {
   const destinations = packages?.map((pkg) => pkg.title) || [];
 
   return (
-    <main className="overflow-hidden bg-white">
+    <main className="overflow-hidden bg-[#fffdf9]">
       <section className="relative min-h-[92vh] overflow-hidden bg-slate-950 pt-18 text-white">
         <img
           src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=2200&q=88"
@@ -128,26 +128,26 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="packages" className="scroll-mt-24 bg-[linear-gradient(180deg,#fff_0%,#f8fafc_100%)] px-6 py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl">
+      <section id="packages" className="premium-page scroll-mt-24 px-6 py-24 sm:py-28">
+        <div className="relative mx-auto max-w-7xl">
           <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-teal-700">Handpicked journeys</p>
+              <p className="eyebrow mb-3">Handpicked journeys</p>
               <h2 className="text-balance text-4xl text-slate-950 sm:text-5xl">Beautiful places. Better ways to experience them.</h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-slate-600">Choose a starting point and we will tailor the pace, stays, and experiences around the way you love to travel.</p>
           </div>
 
           {error ? (
-            <div className="rounded-3xl border border-amber-200 bg-amber-50 p-8 text-center text-amber-950">
+            <div className="rounded-3xl border border-[#d7ad67]/30 bg-[#f5ead3] p-8 text-center text-[#533c20]">
               <h3 className="text-xl">Our journeys are being refreshed.</h3>
-              <p className="mt-2 text-sm text-amber-800">Please send us your dream destination and our team will build a custom plan.</p>
-              <Link href="#quote" className="mt-5 inline-flex rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white">Request a custom trip</Link>
+              <p className="mt-2 text-sm text-[#76552b]">Please send us your dream destination and our team will build a custom plan.</p>
+              <Link href="#quote" className="accent-button mt-5 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold">Request a custom trip</Link>
             </div>
           ) : packages && packages.length > 0 ? (
             <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
               {packages.map((pkg) => (
-                <article key={pkg.id} className="card-lift group overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white shadow-[0_12px_40px_rgba(15,23,42,.07)]">
+                <article key={pkg.id} className="premium-card card-lift group overflow-hidden rounded-[1.75rem]">
                   <div className="relative h-72 overflow-hidden bg-slate-100">
                     <img src={pkg.image_url} alt={pkg.title || 'Holiday destination'} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
@@ -163,35 +163,36 @@ export default async function Home() {
                   <div className="p-6">
                     <h3 className="text-2xl text-slate-950">{pkg.title}</h3>
                     <p className="mt-3 line-clamp-3 min-h-[4.5rem] text-sm leading-6 text-slate-600">{pkg.description}</p>
-                    <Link href={`/destinations/${pkg.slug}`} className="mt-6 flex items-center justify-between border-t border-slate-100 pt-5 text-sm font-bold text-teal-800 transition group-hover:text-teal-600">
-                      View full itinerary <span className="grid h-8 w-8 place-items-center rounded-full bg-teal-50 transition group-hover:translate-x-1 group-hover:bg-teal-100">→</span>
+                    <Link href={`/destinations/${pkg.slug}`} className="mt-6 flex items-center justify-between border-t border-[#15232b]/8 pt-5 text-sm font-bold text-[#7d5727] transition group-hover:text-[#a77835]">
+                      View full itinerary <span className="grid h-8 w-8 place-items-center rounded-full bg-[#d7ad67]/14 transition group-hover:translate-x-1 group-hover:bg-[#d7ad67]/24">→</span>
                     </Link>
                   </div>
                 </article>
               ))}
             </div>
           ) : (
-            <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-12 text-center">
+            <div className="rounded-3xl border border-dashed border-[#d7ad67]/45 bg-[#fffdf9]/75 p-12 text-center">
               <h3 className="text-2xl text-slate-900">A journey made only for you</h3>
               <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-slate-600">Tell us where you want to go and we will create a personal itinerary from scratch.</p>
-              <Link href="#quote" className="mt-6 inline-flex rounded-full bg-slate-950 px-6 py-3 text-sm font-bold text-white">Start planning</Link>
+              <Link href="#quote" className="accent-button mt-6 inline-flex rounded-full px-6 py-3 text-sm font-bold">Start planning</Link>
             </div>
           )}
         </div>
       </section>
 
-      <section id="why-us" className="scroll-mt-24 bg-[#08202c] px-6 py-24 text-white sm:py-28">
-        <div className="mx-auto max-w-7xl">
+      <section id="why-us" className="relative scroll-mt-24 overflow-hidden bg-[#061b26] px-6 py-24 text-white sm:py-28">
+        <div className="absolute -right-32 top-10 h-96 w-96 rounded-full bg-[#d7ad67]/10 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-[.75fr_1.25fr]">
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-amber-300">Why travel with Oxour</p>
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#d7ad67]">Why travel with Oxour</p>
               <h2 className="text-balance text-4xl sm:text-5xl">A holiday should feel effortless long before take-off.</h2>
               <p className="mt-6 max-w-md text-sm leading-7 text-white/60">Thoughtful planning is invisible. It is the right hotel, a sensible transfer, and help exactly when you need it.</p>
             </div>
             <div className="grid gap-4">
               {reasons.map((reason) => (
-                <div key={reason.number} className="group grid gap-4 rounded-2xl border border-white/10 bg-white/[.045] p-6 transition hover:border-amber-200/25 hover:bg-white/[.075] sm:grid-cols-[70px_1fr]">
-                  <span className="text-sm font-bold tracking-[0.18em] text-amber-300">{reason.number}</span>
+                <div key={reason.number} className="group grid gap-4 rounded-2xl border border-white/10 bg-white/[.045] p-6 transition hover:border-[#d7ad67]/35 hover:bg-white/[.075] sm:grid-cols-[70px_1fr]">
+                  <span className="text-sm font-bold tracking-[0.18em] text-[#d7ad67]">{reason.number}</span>
                   <div>
                     <h3 className="text-2xl">{reason.title}</h3>
                     <p className="mt-2 text-sm leading-7 text-white/58">{reason.copy}</p>

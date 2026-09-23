@@ -35,13 +35,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navbar />
         {children}
         
-        <footer className="mt-auto border-t border-white/10 bg-slate-950 py-14 text-white">
+        <footer className="mt-auto border-t border-white/10 bg-[#061b26] py-14 text-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
               <div>
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-full border border-amber-300/40 bg-amber-300/10 text-sm font-bold text-amber-200">O</span>
-                  <h3 className="text-2xl font-bold">Oxour Holiday</h3>
+                  <span className="grid h-9 w-9 place-items-center rounded-full border border-[#d7ad67]/55 bg-[#d7ad67]/10 text-sm font-bold text-[#e8cf9b]">O</span>
+                  <h3 className="text-2xl font-bold">Oxour <span className="text-[#d7ad67]">Holiday</span></h3>
                 </div>
                 <p className="max-w-md text-sm leading-relaxed text-slate-400">
                   Your trusted partner for unforgettable Southeast Asian adventures. We deliver premium experiences with transparency and care.
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </div>
 
               <div>
-                <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/80">Contact</h4>
+                <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#e8cf9b]">Contact</h4>
                 <div className="space-y-2 text-sm text-slate-400">
                   <p>+91 98765 43210</p>
                   <p>+91 87654 32109</p>
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </div>
 
               <div>
-                <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/80">Our office</h4>
+                <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#e8cf9b]">Our office</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
                   123 MG Road, Connaught Place<br />
                   New Delhi, Delhi 110001<br />

@@ -39,13 +39,13 @@ export default function LeadTableBody({ leads, updateLead }: LeadTableBodyProps)
               href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=Hi ${encodeURIComponent(lead.name)}, this is Oxour Holiday. We received your inquiry about ${encodeURIComponent(lead.destination)}.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline font-medium"
+              className="font-medium text-[#9a6f31] hover:underline"
             >
               {lead.phone}
             </a>
           </td>
           <td className="px-6 py-4">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+            <span className="inline-flex items-center rounded-full bg-[#d7ad67]/16 px-2.5 py-0.5 text-xs font-medium text-[#7d5727]">
               {lead.destination}
             </span>
           </td>

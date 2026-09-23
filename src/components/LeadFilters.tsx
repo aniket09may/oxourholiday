@@ -26,7 +26,7 @@ export default function LeadFilters() {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 mb-6">
+    <div className="premium-card mb-6 rounded-2xl p-4">
       <div className="flex flex-col sm:flex-row gap-4">
         {/* Search Input */}
         <div className="flex-1">

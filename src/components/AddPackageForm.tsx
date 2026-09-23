@@ -59,7 +59,7 @@ export default function AddPackageForm() {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
+    <div className="premium-card rounded-2xl p-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
           Add New Package
@@ -220,7 +220,7 @@ export default function AddPackageForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-slate-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800 transition disabled:bg-slate-400 disabled:cursor-not-allowed flex items-center gap-2"
+            className="accent-button flex items-center gap-2 rounded-full px-8 py-3 font-semibold disabled:cursor-not-allowed disabled:bg-slate-400"
           >
             {isSubmitting ? (
               <>

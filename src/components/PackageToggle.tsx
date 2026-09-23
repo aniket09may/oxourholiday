@@ -43,8 +43,8 @@ export default function PackageToggle({ packageId, initialStatus }: PackageToggl
       role="switch"
       aria-checked={isActive}
       aria-label={`${isActive ? 'Deactivate' : 'Activate'} package`}
-      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
-        isActive ? 'bg-emerald-600' : 'bg-slate-300'
+      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#d7ad67] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
+        isActive ? 'bg-[#b48743]' : 'bg-slate-300'
       }`}
     >
       <span

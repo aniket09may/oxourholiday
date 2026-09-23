@@ -31,19 +31,20 @@ export default async function DestinationPage({ params }: PageProps) {
     .order('title', { ascending: true });
 
   return (
-    <main className="flex min-h-screen flex-col bg-white pt-18">
+    <main className="premium-page flex min-h-screen flex-col pt-18">
       {/* Hero Section with Package Image */}
-      <section className="relative w-full h-[60vh] bg-slate-950">
+      <section className="relative h-[60vh] w-full bg-[#061b26]">
         <img 
           src={pkg.image_url} 
           alt={pkg.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,15,24,.78)_0%,rgba(2,15,24,.46)_55%,rgba(2,15,24,.24)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#061b26]/85 via-transparent to-transparent" />
         
         <div className="relative z-10 h-full flex items-end">
           <div className="max-w-7xl mx-auto px-6 pb-16 w-full">
-            <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-4">
+            <div className="mb-4 inline-block border-l-2 border-[#d7ad67] pl-3 text-xs font-bold uppercase tracking-[0.2em] text-[#e8cf9b]">
               {pkg.duration}
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
@@ -63,7 +64,7 @@ export default async function DestinationPage({ params }: PageProps) {
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-12">
               {/* Price and Overview */}
-              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <div className="premium-card rounded-[1.75rem] p-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
                   <div>
                     <span className="text-sm text-slate-500 block mb-2">Starting from</span>
@@ -79,12 +80,12 @@ export default async function DestinationPage({ params }: PageProps) {
                   </div>
                   <a 
                     href="#booking" 
-                    className="inline-block bg-slate-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-slate-800 transition text-center"
+                    className="accent-button inline-block rounded-full px-8 py-4 text-center font-semibold"
                   >
                     Book Now
                   </a>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-slate-300">
+                <div className="grid grid-cols-2 gap-4 border-t border-[#15232b]/12 pt-6 md:grid-cols-4">
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Duration</p>
                     <p className="font-semibold text-slate-900">{pkg.duration}</p>
@@ -112,8 +113,8 @@ export default async function DestinationPage({ params }: PageProps) {
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {pkg.highlights.map((highlight: string, index: number) => (
-                      <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-xl border border-slate-200">
-                        <svg className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div key={index} className="premium-card flex items-start gap-3 rounded-xl p-4">
+                        <svg className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#a77835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <p className="text-slate-700">{highlight}</p>
@@ -141,31 +142,31 @@ export default async function DestinationPage({ params }: PageProps) {
                   </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#a77835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-slate-700">Airport transfers & local transportation</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#a77835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-slate-700">4-star hotel accommodation</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#a77835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-slate-700">Daily breakfast</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#a77835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-slate-700">Visa assistance & documentation support</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#a77835]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-slate-700">24/7 travel support</span>
@@ -208,14 +209,14 @@ export default async function DestinationPage({ params }: PageProps) {
 
             {/* Sidebar - Booking Form */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 bg-slate-900 rounded-2xl p-6 shadow-2xl">
+              <div className="glass-panel dark-glass-panel sticky top-24 rounded-[1.75rem] p-6 shadow-2xl">
                 <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
                   Get Custom Quote
                 </h3>
                 <p className="text-white/80 text-sm mb-6">
                   Receive personalized itinerary and pricing on WhatsApp
                 </p>
-                <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4">
+                <div className="rounded-xl border border-white/10 bg-white/[.04] p-4 backdrop-blur-lg">
                   <LeadForm destinations={allPackages?.map(p => p.title) || []} />
                 </div>
               </div>
@@ -225,11 +226,11 @@ export default async function DestinationPage({ params }: PageProps) {
       </section>
 
       {/* Back to Packages */}
-      <section className="py-12 px-6 bg-slate-50 border-t border-slate-200">
+      <section className="border-t border-[#d7ad67]/18 bg-[#efe5d3]/45 px-6 py-12">
         <div className="max-w-7xl mx-auto text-center">
           <Link 
             href="/#packages"
-            className="inline-flex items-center gap-2 text-slate-700 hover:text-slate-900 font-semibold transition"
+            className="inline-flex items-center gap-2 font-semibold text-[#76552b] transition hover:text-[#a77835]"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

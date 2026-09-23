@@ -104,7 +104,7 @@ export default async function LeadsPage({ searchParams }: LeadsPageProps) {
   const contactedLeads = leads?.filter((lead) => lead.status?.toLowerCase() === 'contacted').length || 0;
 
   return (
-    <main className="min-h-screen bg-slate-50 py-12 px-6">
+    <main className="min-h-screen px-6 py-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -118,7 +118,7 @@ export default async function LeadsPage({ searchParams }: LeadsPageProps) {
 
         {/* Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="premium-card rounded-2xl p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-1">Total Leads</p>
@@ -132,7 +132,7 @@ export default async function LeadsPage({ searchParams }: LeadsPageProps) {
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="premium-card rounded-2xl p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-1">New Leads</p>
@@ -146,7 +146,7 @@ export default async function LeadsPage({ searchParams }: LeadsPageProps) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="premium-card rounded-2xl p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-1">Contacted</p>
@@ -165,7 +165,7 @@ export default async function LeadsPage({ searchParams }: LeadsPageProps) {
         <LeadFilters />
 
         {/* Leads Table */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="premium-card overflow-hidden rounded-2xl">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-200">
@@ -206,7 +206,7 @@ export default async function LeadsPage({ searchParams }: LeadsPageProps) {
         {/* Export/Actions Section */}
         {leads && leads.length > 0 && (
           <div className="mt-6 flex justify-end">
-            <button className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 rounded-lg transition-colors flex items-center gap-2">
+            <button className="flex items-center gap-2 rounded-full border border-[#d7ad67]/35 bg-[#fffdf9] px-4 py-2 text-sm font-medium text-[#76552b] transition-colors hover:bg-[#d7ad67]/10">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>

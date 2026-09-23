@@ -41,7 +41,7 @@ export default function PackagesTable({ packages }: PackagesTableProps) {
 
   return (
     <>
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mt-8">
+      <div className="premium-card mt-8 overflow-hidden rounded-2xl">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-200">
@@ -84,7 +84,7 @@ export default function PackagesTable({ packages }: PackagesTableProps) {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      <span className="inline-flex items-center rounded-full bg-[#d7ad67]/16 px-2.5 py-0.5 text-xs font-medium text-[#7d5727]">
                         {pkg.duration}
                       </span>
                     </td>
@@ -131,7 +131,7 @@ export default function PackagesTable({ packages }: PackagesTableProps) {
                         </button>
                         <Link 
                           href={`/destinations/${pkg.slug}`}
-                          className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
+                          className="flex items-center gap-1 text-sm font-medium text-[#9a6f31] hover:text-[#704b20]"
                           target="_blank"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
