@@ -77,6 +77,18 @@ export default async function Home() {
           alt="Long-tail boat approaching a tropical Thai island"
           className="absolute inset-0 h-full w-full object-cover"
         />
+        <video
+          className="hero-background-video absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=2200&q=88"
+          aria-hidden="true"
+        >
+          <source src="/videos/home-hero.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,15,24,.94)_0%,rgba(3,22,33,.82)_38%,rgba(3,21,31,.54)_72%,rgba(2,16,25,.30)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,12,20,.18)_0%,transparent_48%,rgba(2,14,22,.48)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_73%_18%,rgba(215,173,103,.18),transparent_27%)]" />

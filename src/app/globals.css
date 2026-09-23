@@ -193,6 +193,10 @@ select.field-control option {
 .animation-delay-450 { animation-delay: 450ms; }
 .floating-orb { animation: float 8s ease-in-out infinite; }
 
+.hero-background-video {
+  pointer-events: none;
+}
+
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -207,6 +211,7 @@ select.field-control option {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero-background-video { display: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
