@@ -124,7 +124,7 @@ export default function LeadForm({ destinations = [] }: LeadFormProps) {
             aria-label="Country"
             value={country}
             onChange={(event) => setCountry(event.target.value as CountryCode)}
-            className="field-control px-3"
+            className="field-control pl-3"
           >
             {COUNTRIES.map((item) => (
               <option key={item.country} value={item.country}>
