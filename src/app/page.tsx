@@ -48,7 +48,7 @@ export default async function Home() {
             {/* Left: Headline */}
             <div className="text-white">
               <span className="inline-block py-2 px-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs md:text-sm font-semibold tracking-wider uppercase mb-6">
-                India's Southeast Asia Specialist
+                India&apos;s Southeast Asia Specialist
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
                 Curated Southeast Asian Escapes
@@ -106,18 +106,14 @@ export default async function Home() {
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  {/* Price Tag Overlay */}
-                  <div className="absolute bottom-4 right-4 px-4 py-2 bg-black/60 backdrop-blur-sm text-white rounded-full shadow-xl">
-                    <div className="flex flex-col items-end">
-                      {pkg.regular_price && (
-                        <del className="text-gray-400 text-sm">₹{pkg.regular_price?.toLocaleString('en-IN')}</del>
-                      )}
-                      <div>
-                        <span className="text-xs font-medium">From</span>
-                        <span className="text-xl font-bold ml-1">₹{pkg.price?.toLocaleString('en-IN')}</span>
-                      </div>
-                    </div>
-                  </div>
+                  {/* Package Enquiry Button */}
+                  <Link
+                    href={`/destinations/${pkg.slug || ''}#booking`}
+                    aria-label={`Enquire about ${pkg.title}`}
+                    className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-5 py-3 bg-slate-900/90 backdrop-blur-sm text-white rounded-full shadow-xl font-semibold text-sm transition-colors hover:bg-slate-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  >
+                    Enquire Now <span aria-hidden="true">→</span>
+                  </Link>
                   {/* Duration Badge */}
                   <div className="absolute top-4 left-4 bg-white/90 text-slate-900 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
                     {pkg.duration}
@@ -208,4 +204,4 @@ export default async function Home() {
       </footer>
     </main>
   );
-}  
+}

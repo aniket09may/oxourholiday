@@ -61,26 +61,18 @@ export default async function DestinationPage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-12">
-              {/* Price and Overview */}
+              {/* Enquiry and Overview */}
               <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
                   <div>
-                    <span className="text-sm text-slate-500 block mb-2">Starting from</span>
-                    {pkg.regular_price && (
-                      <del className="text-gray-400 text-sm block mb-1">₹{pkg.regular_price?.toLocaleString('en-IN')}</del>
-                    )}
-                    <div>
-                      <span className="text-5xl font-bold text-slate-900" style={{ fontFamily: 'var(--font-playfair)' }}>
-                        ₹{pkg.price?.toLocaleString('en-IN')}
-                      </span>
-                      <span className="text-slate-500 ml-2">per person</span>
-                    </div>
+                    <h2 className="text-2xl font-bold text-slate-900" style={{ fontFamily: 'var(--font-playfair)' }}>Your holiday, tailored to you</h2>
+                    <p className="text-sm text-slate-500 mt-2">Contact our travel experts for a personalised itinerary and quote.</p>
                   </div>
                   <a 
                     href="#booking" 
                     className="inline-block bg-slate-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-slate-800 transition text-center"
                   >
-                    Book Now
+                    Enquire Now
                   </a>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-slate-300">
@@ -136,7 +128,7 @@ export default async function DestinationPage({ params }: PageProps) {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-                    What's Included
+                    What&apos;s Included
                   </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
@@ -173,7 +165,7 @@ export default async function DestinationPage({ params }: PageProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-                    What's Not Included
+                    What&apos;s Not Included
                   </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
@@ -207,7 +199,7 @@ export default async function DestinationPage({ params }: PageProps) {
 
             {/* Sidebar - Booking Form */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 bg-slate-900 rounded-2xl p-6 shadow-2xl">
+              <div id="booking" className="scroll-mt-24 sticky top-24 bg-slate-900 rounded-2xl p-6 shadow-2xl">
                 <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
                   Get Custom Quote
                 </h3>
@@ -215,7 +207,7 @@ export default async function DestinationPage({ params }: PageProps) {
                   Receive personalized itinerary and pricing on WhatsApp
                 </p>
                 <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4">
-                  <LeadForm destinations={allPackages?.map(p => p.title) || []} />
+                  <LeadForm destinations={[pkg.title, ...(allPackages?.map(p => p.title).filter(title => title !== pkg.title) || [])]} />
                 </div>
               </div>
             </div>
@@ -227,7 +219,7 @@ export default async function DestinationPage({ params }: PageProps) {
       <section className="py-12 px-6 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto text-center">
           <Link 
-            href="/#destinations" 
+            href="/#packages"
             className="inline-flex items-center gap-2 text-slate-700 hover:text-slate-900 font-semibold transition"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

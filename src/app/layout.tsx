@@ -48,8 +48,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <div>
                 <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
                 <div className="space-y-2 text-sm text-slate-400">
-                  <p>📞 +91 98765 43210</p>
-                  <p>📞 +91 87654 32109</p>
+                  <p>📞 <a href="tel:+919112787979" className="hover:text-white transition-colors">+91 91127 87979</a></p>
+                  <p>📞 <a href="tel:+919130585959" className="hover:text-white transition-colors">+91 91305 85959</a></p>
                   <p>✉️ hello@oxourholiday.com</p>
                 </div>
               </div>
@@ -58,8 +58,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <div>
                 <h4 className="text-lg font-semibold mb-4">Our Location</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  123 MG Road, Connaught Place<br />
-                  New Delhi, Delhi 110001<br />
+                  Oxour Holiday<br />
+                  Shop No.7 United Apartments, East Street, MG Road Camp<br />
+                  Pune 411001<br />
                   India
                 </p>
               </div>

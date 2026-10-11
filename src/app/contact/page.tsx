@@ -10,7 +10,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Ready to start your journey? Reach out to us and let's plan your perfect Southeast Asian escape.
+            Ready to start your journey? Reach out to us and let&apos;s plan your perfect Southeast Asian escape.
           </p>
         </div>
 
@@ -24,8 +24,9 @@ export default function ContactPage() {
                 📍 Our Office
               </h2>
               <p className="text-slate-700 leading-relaxed">
-                123 MG Road, Connaught Place<br />
-                New Delhi, Delhi 110001<br />
+                Oxour Holiday<br />
+                Shop No.7 United Apartments, East Street, MG Road Camp<br />
+                Pune 411001<br />
                 India
               </p>
             </div>
@@ -50,11 +51,11 @@ export default function ContactPage() {
               <div className="space-y-3 text-slate-700">
                 <div>
                   <p className="font-medium text-sm text-slate-500 uppercase tracking-wide">Customer Support</p>
-                  <p className="text-lg">+91 98765 43210</p>
+                  <a href="tel:+919112787979" className="text-lg hover:text-blue-600 transition-colors">+91 91127 87979</a>
                 </div>
                 <div>
                   <p className="font-medium text-sm text-slate-500 uppercase tracking-wide">Sales Inquiries</p>
-                  <p className="text-lg">+91 87654 32109</p>
+                  <a href="tel:+919130585959" className="text-lg hover:text-blue-600 transition-colors">+91 91305 85959</a>
                 </div>
                 <div>
                   <p className="font-medium text-sm text-slate-500 uppercase tracking-wide">Email</p>
@@ -92,13 +93,13 @@ export default function ContactPage() {
           </div>
 
           {/* Right Side - Lead Form */}
-          <div className="sticky top-24">
+          <div id="enquiry" className="scroll-mt-24 sticky top-24">
             <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
                 Send Us a Message
               </h2>
               <p className="text-blue-100 mb-6 text-sm">
-                Fill out the form below and we'll connect with you on WhatsApp instantly.
+                Fill out the form below and we&apos;ll connect with you on WhatsApp instantly.
               </p>
               <LeadForm />
             </div>
