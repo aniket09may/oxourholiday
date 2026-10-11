@@ -59,7 +59,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-sm text-slate-500 uppercase tracking-wide">Email</p>
-                  <p className="text-lg">hello@oxourholiday.com</p>
+                  <a href="mailto:sales@oxourholiday.com" className="text-lg hover:text-blue-600 transition-colors">sales@oxourholiday.com</a>
                 </div>
               </div>
             </div>

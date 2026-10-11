@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <div className="space-y-2 text-sm text-slate-400">
                   <p>📞 <a href="tel:+919112787979" className="hover:text-white transition-colors">+91 91127 87979</a></p>
                   <p>📞 <a href="tel:+919130585959" className="hover:text-white transition-colors">+91 91305 85959</a></p>
-                  <p>✉️ hello@oxourholiday.com</p>
+                  <p>✉️ <a href="mailto:sales@oxourholiday.com" className="hover:text-white transition-colors">sales@oxourholiday.com</a></p>
                 </div>
               </div>
 

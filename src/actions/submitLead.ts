@@ -27,10 +27,9 @@ export async function submitLead(data: SubmitLeadData) {
 
     // Send instant email notification via Resend
     try {
-      await resend.emails.send({
-        from: 'onboarding@resend.dev', // Replace with your verified domain email
-        // to: 'sales@oxourholiday.com',
-        to: 'aniket09may@gmail.com',
+      const { error: emailError } = await resend.emails.send({
+        from: 'Oxour Holiday <sales@oxourholiday.com>',
+        to: 'sales@oxourholiday.com',
         subject: 'New Lead Submission',
         text: `New Lead Received!
 
@@ -40,6 +39,9 @@ Destination: ${data.destination.charAt(0).toUpperCase() + data.destination.slice
 
 Please follow up with this lead as soon as possible.`,
       });
+      if (emailError) {
+        throw new Error(emailError.message);
+      }
     } catch (emailError) {
       // Log email error but don't fail the lead submission
       console.error('Failed to send email notification:', emailError);
